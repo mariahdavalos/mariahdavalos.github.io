@@ -1,0 +1,37 @@
+@import '../../../helpers/variables.scss';
+
+.header-container {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    background-color: #212121;
+    align-items: center;
+    padding: .75rem 1rem .75rem 2.5rem;
+    margin: 20px 0;
+    border-radius:6px;
+}
+
+.header-text-container {
+    width: 80%;
+    margin-bottom: .75rem;
+    color: $neutral-light;
+}
+
+.header-text {
+    display: flex;
+
+    :not(last-child){
+        height: .325rem;
+    }
+}
+
+.yellow-divider {
+    height: .25rem;
+    background-color: $primary-yellow;
+    width: 85%;
+}
+
+.header-image {
+    height: 36px;
+    margin-right: 48px;
+}

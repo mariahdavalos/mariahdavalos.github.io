@@ -1,0 +1,116 @@
+@import '../../../helpers/variables.scss';
+
+.test {
+    width: 44rem;
+    background-color: #222222;
+    color: $neutral-light;
+    margin: 8px;
+    padding: 20px 32px;
+    border-radius: 4px;
+    height: 28px;
+
+    display: flex;
+    align-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity .45s ease;
+
+    display: flex;
+    align-items: center;
+
+    &:not(.show){
+        width: 0px;
+        &.arrival-text {
+            color: #222222;
+            width: 0px;
+        }
+
+        .line-indicator {
+            background-color: #222222;
+        }
+
+        .line-text {
+            color: #222222;
+        }
+
+    }
+}
+  
+.fade-in.show {
+    opacity: 1;
+}
+
+.arrival-text {
+    margin: 0px;
+    line-height: 2;
+}
+
+.line-text {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.fade-container {
+    display: flex;
+    align-items: center;
+    width: 24%;
+    justify-content: center;
+}
+
+.info-container {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.info-content {
+    margin-right: 12px;
+}
+
+.direction-container {
+    width: 20%;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+@keyframes ease {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;    }
+  }
+  
+
+.line-indicator {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+
+    &.blue {
+        background-color: #0092D0;
+    }
+
+    &.gold {
+        background-color: #FDBE43;
+    }
+
+    &.red {
+        background-color: #981b1e
+    }
+
+    &.green {
+        background-color: #0f893b
+    }
+
+    margin-left: 12px;
+  }
