@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { parseTrainArrivals } from '../../../helpers/utils'
-import './TrainScheduleSelectionItem.scss'
+import './TrainScheduleSelectionItems.scss'
 
 
 const getSchedule = (trains: any, hideLine: boolean) => {
@@ -10,7 +10,7 @@ const getSchedule = (trains: any, hideLine: boolean) => {
             <div key={train.dest} className='test'>
                 <span className='info-container'>
                     <span className='info-content'>{train.arrivalStation}</span>
-                    <span className='info-content'>to </span>
+                    <span className='info-content'>to</span>
                     <span className='info-content'>{train.dest}</span>
                 </span>
                 <span className='direction-container'>{`( ${train.dir} )`}</span>
@@ -26,7 +26,7 @@ const getSchedule = (trains: any, hideLine: boolean) => {
     </div>
 }
 
-const TrainScheduleSelectionItem = () => {
+const TrainScheduleSelectionItems = () => {
     const [train] = useState(parseTrainArrivals())
 
     const [hideLine, setHideLine] = useState(false)
@@ -46,4 +46,4 @@ const TrainScheduleSelectionItem = () => {
     return scheduleSelectionItems
 }
 
-export default TrainScheduleSelectionItem;
+export default TrainScheduleSelectionItems;

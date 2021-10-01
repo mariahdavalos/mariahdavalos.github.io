@@ -1,10 +1,10 @@
 @import '../../../helpers/variables.scss';
 
 .header-container {
-    width: 80%;
+    width: 48rem;
     display: flex;
     flex-direction: row;
-    background-color: #212121;
+    background-color: $neutral-background;
     align-items: center;
     padding: .75rem 1rem .75rem 2.5rem;
     margin: 20px 0;
