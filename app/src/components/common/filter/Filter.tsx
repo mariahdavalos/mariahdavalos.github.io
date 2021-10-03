@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import FormGroup from '@mui/material/FormGroup';
 import FormControl from '@mui/material/FormControl';
@@ -13,12 +13,13 @@ import Checkbox from '@mui/material/Checkbox';
 import FilterButton from "../buttons/FilterButton";
 import { filterSelectionAtom } from "../../../store/atoms/filterSelectionAtom";
 import './Filter.scss'
+import SubmitButton from "../buttons/SubmitButton";
 
 
 const filterDirections = ['North', 'South', 'East', 'West'];
 const filterLines = ['Red', 'Gold', 'Blue', 'Green'];
 
-const updatedFilterSelection = (updatedValue: string, filter: string, filterSelection: any, setFilterSelection: any) => {
+const updatedFilterCheckboxSelection = (updatedValue: string, filter: string, filterSelection: any, setFilterSelection: any) => {
     let updatedFilterSelection = { ...filterSelection }
 
     if (filterSelection[filter].some((value: string) => value === updatedValue.toLowerCase())) {
@@ -26,6 +27,13 @@ const updatedFilterSelection = (updatedValue: string, filter: string, filterSele
     } else {
         updatedFilterSelection[filter as any] = [...updatedFilterSelection[filter as any], updatedValue.toLowerCase()]
     }
+
+    setFilterSelection(updatedFilterSelection)
+}
+
+const updateFilterInputSelection = (updatedValue: string, filter: string, filterSelection: any, setFilterSelection: any) => {
+    let updatedFilterSelection = { ...filterSelection }
+    updatedFilterSelection[filter as any] = updatedValue
 
     setFilterSelection(updatedFilterSelection)
 }
@@ -41,7 +49,7 @@ const generateCheckboxes = (formLabel: string, checkboxValues: string[], filterS
                         labelPlacement="bottom"
                         control={
                             <Checkbox
-                                onChange={() => updatedFilterSelection(checkboxValue, formLabel.toLowerCase(), filterSelection, setFilterSelection)}
+                                onChange={() => updatedFilterCheckboxSelection(checkboxValue, formLabel.toLowerCase(), filterSelection, setFilterSelection)}
                                 style={{ color: '#FDBE43', width: '20px', margin: '12px' }}
                                 checked={filterSelection[formLabel.toLowerCase() as any]?.some((value: any) => value === checkboxValue.toLowerCase())} />}
                         label={checkboxValue}
@@ -60,9 +68,15 @@ const lineOptions = (filterSelection: any, setFilterSelection: any) => {
     return generateCheckboxes('Lines', filterLines, filterSelection, setFilterSelection);
 }
 
-const getLocationInput = (locationType: string, filterSelection: any) => {
-    return <TextField style={{ borderColor: 'white', marginBottom: '8px' }} id={`${locationType}Location`} label={`${locationType} Location`} variant="outlined" />
-
+const getLocationInput = (locationType: string, filterSelection: any, setFilterSelection: any) => {
+    return <TextField
+        value={filterSelection[locationType.toLowerCase()]}
+        onChange={(event: any) =>
+            updateFilterInputSelection(event.target.value, locationType.toLowerCase(), filterSelection, setFilterSelection)}
+        style={{ borderColor: 'white', marginBottom: '8px' }}
+        id={`${locationType}Location`}
+        label={`${locationType} Location`}
+        variant="outlined" />
 }
 
 const toggleFilter = (showFilter: boolean, setShowFilter: any) => {
@@ -80,7 +94,7 @@ const Filter = () => {
         setLines(lineOptions(filterSelection, setFilterSelection));
         setDirections(directionOptions(filterSelection, setFilterSelection))
 
-    }, [filterSelection])
+    }, [filterSelection, setFilterSelection])
 
     return <div className='filter-container'>
         <FilterButton onClick={() => toggleFilter(true, setShowFilter)} />
@@ -88,22 +102,25 @@ const Filter = () => {
         <Dialog
             PaperProps={{
                 style: {
-                    backgroundColor: '#0092D0',
+                    backgroundColor: '#212121',
                     boxShadow: 'none',
+                    border: '4px solid #111111'
                 },
             }}
-            onClose={() => toggleFilter(false, setShowFilter)} open={showFilter}>
+            open={showFilter}>
             <DialogTitle className='dialog-title'>Filter Options</DialogTitle>
             <div className='orange-divider' />
 
             <div className='filter-dialouge'>
                 <div className='location-filter-options'>
-                    {getLocationInput('Arrival', filterSelection)}
-                    {getLocationInput('Departure', filterSelection)}
+                    {getLocationInput('Arrival', filterSelection, setFilterSelection)}
+                    {getLocationInput('Departure', filterSelection, setFilterSelection)}
                 </div>
                 {lines}
                 {directions}
             </div>
+
+            <SubmitButton onClick={() => toggleFilter(false, setShowFilter)} />
         </Dialog>
     </div >
 }

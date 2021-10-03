@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik');
+@import './helpers/variables.scss';
 
 body{
   font-family: 'Rubik', sans-serif;
@@ -10,4 +11,11 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.filter-and-refresh {
+  display: flex;
+  align-items: center;
+  margin-right: 60px;
+  color: $neutral-light;
 }

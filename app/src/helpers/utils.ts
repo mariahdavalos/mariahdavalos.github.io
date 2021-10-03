@@ -1,14 +1,5 @@
-const samples = [{
-    "DESTINATION": "Hamilton E Holmes", "DIRECTION": "W", "EVENT_TIME": "12\/27\/2013 12:29:42 PM", "LINE": "BLUE", "NEXT_ARR": "12:29:52 PM", "STATION": "VINE CITY STATION", "TRAIN_ID": "101206", "WAITING_SECONDS": "-31"
-    , "WAITING_TIME": "Boarding"
-}, {
-    "DESTINATION": "Airport",
-    "DIRECTION": "S", "EVENT_TIME": "12\/27\/2013 12:30:06 PM", "LINE": "GOLD", "NEXT_ARR": "12:30:16 PM", "STATION": "GARNETT STATION", "TRAIN_ID": "302506", "WAITING_SECONDS": "-7",
-    "WAITING_TIME": "Boarding"
-}];
-
-const getDirection = (direction: string) => {
-    const term = 'bound'
+const getDirection = (direction: string, fullDisplayName: boolean) => {
+    const term = fullDisplayName ? 'bound' : ''
     switch (direction) {
         case ('N'):
             return `North${term}`
@@ -23,8 +14,30 @@ const getDirection = (direction: string) => {
     }
 }
 
-export const parseTrainArrivals = () => {
-    return samples.map(sample => { return { id: sample.TRAIN_ID, dest: sample.DESTINATION.toUpperCase(), dir: getDirection(sample.DIRECTION), line: sample.LINE, arrivalTime: sample.NEXT_ARR, arrivalStation: sample.STATION.toUpperCase(), waitTime: sample.WAITING_TIME } })
+const filterContainsElement = (filterItems: string[], currentItem: string) => {
+
+    return filterItems.some((filter: string) => filter === currentItem.toLowerCase())
+}
+
+const filterMatchesElement = (filterItem: string, currentItem: string) => {
+    return filterItem === '' || currentItem.toLowerCase().includes(filterItem.toLowerCase())
+}
+
+const filterTrainArrivals = (samples: any, filterSelection: any) => {
+    return samples.filter((sample: any) => filterContainsElement(filterSelection.lines, sample.LINE)
+        && filterContainsElement(filterSelection.directions, getDirection(sample.DIRECTION, false))
+        && filterMatchesElement(filterSelection.departure, sample.DESTINATION)
+        && filterMatchesElement(filterSelection.arrival, sample.STATION))
+}
+
+export const parseTrainArrivals = (trainSchedules: any, filterSelection?: any) => {
+    let filteredSelection = trainSchedules;
+
+    if (!!filterSelection) {
+        filteredSelection = filterTrainArrivals(filteredSelection, filterSelection)
+    }
+
+    return filteredSelection.map((trainSchedule: any) => { return { id: trainSchedule.TRAIN_ID, dest: trainSchedule.DESTINATION.toUpperCase(), dir: getDirection(trainSchedule.DIRECTION, true), line: trainSchedule.LINE, arrivalTime: trainSchedule.NEXT_ARR, arrivalStation: trainSchedule.STATION.toUpperCase(), waitTime: trainSchedule.WAITING_TIME } })
 }
 
 
@@ -40,6 +53,3 @@ export const getGreeting = () => {
         return `${greeting}evening!`
     }
 }
-
-
-export default {}

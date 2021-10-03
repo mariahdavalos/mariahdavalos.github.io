@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { parseTrainArrivals } from '../../../helpers/utils'
 import './TrainScheduleSelectionItems.scss'
 
-
 const getSchedule = (trains: any, hideLine: boolean) => {
+    if (!trains) return <div />;
+
     return <div>
         {trains.map((train: any) =>
             <div key={train.dest} className='test'>
@@ -26,11 +26,9 @@ const getSchedule = (trains: any, hideLine: boolean) => {
     </div>
 }
 
-const TrainScheduleSelectionItems = () => {
-    const [train] = useState(parseTrainArrivals())
-
+const TrainScheduleSelectionItems = ({ trainSchedules }: { trainSchedules: any }) => {
     const [hideLine, setHideLine] = useState(false)
-    const [scheduleSelectionItems, setScheduleSelectionItems] = useState(getSchedule(train, hideLine))
+    const [scheduleSelectionItems, setScheduleSelectionItems] = useState(getSchedule(trainSchedules, hideLine))
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -41,7 +39,7 @@ const TrainScheduleSelectionItems = () => {
         }
     }, []);
 
-    useMemo(() => { setScheduleSelectionItems(getSchedule(train, hideLine)) }, [hideLine])
+    useMemo(() => { setScheduleSelectionItems(getSchedule(trainSchedules, hideLine)) }, [hideLine, trainSchedules])
 
     return scheduleSelectionItems
 }

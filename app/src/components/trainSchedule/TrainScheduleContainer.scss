@@ -1,0 +1,15 @@
+@import '../../helpers/variables.scss';
+
+
+.no-matching {
+    white-space: pre-wrap;
+    margin-top: 16px;
+    color: $neutral-light;
+}
+
+.train-schedule-container {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
