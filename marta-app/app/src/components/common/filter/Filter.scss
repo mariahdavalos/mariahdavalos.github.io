@@ -4,16 +4,16 @@
     width: 48rem;
     display: flex;
     justify-content: flex-end;
-    margin: 12px;
+    margin: .75rem;
 }
 
 .filter-dialouge {
-    padding: 16px 4px 0px 4px;
+    padding: 1rem .25rem 0px .25rem;
     display: flex;
     flex-direction: column;
     background-color: $neutral-background;
     color: $neutral-light;
-    width: 520px;
+    width: 32.5rem;
 
     legend {
         color: $neutral-light;
@@ -25,11 +25,11 @@
 
     .location-filter-options {
         color: $neutral-light;
-        margin-bottom: 20px;
-        margin-left: 48px;
+        margin-bottom: 1.25rem;
+        margin-left: 3rem;
 
         div {
-            margin-right: 8px;
+            margin-right: .5rem;
         }
 
         input {
@@ -47,9 +47,9 @@ legend {
 }
 
 .form {
-    height: 120px;
-    margin-bottom: 12px;
-    margin-left: 48px;
+    height: 7.5rem;
+    margin-bottom: .75rem;
+    margin-left: 3rem;
 }
 
 .dialog-title{

@@ -4,6 +4,7 @@
     "semi": false,
     "singleQuote": true,
     "editor.formatOnSave": false,
+    "jsxBracketSameLine": false,
     "[typescript]": {
         "editor.formatOnSave": true
     },

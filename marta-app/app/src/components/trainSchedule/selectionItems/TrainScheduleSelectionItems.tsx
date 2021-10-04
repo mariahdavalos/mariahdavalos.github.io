@@ -7,10 +7,10 @@ const getSchedule = (trains: any, hideLine: boolean) => {
 
     return <div>
         {trains.map((train: any) =>
-            <div key={train.dest + train.arrivalTime} className='test'>
+            <div key={train.dest + train.arrivalStation + train.arrivalTime} className='line-item'>
                 <span className='info-container'>
                     <span className='info-content'>{train.arrivalStation}</span>
-                    <span className='info-content'>to</span>
+                    <span className='info-content to'>to</span>
                     <span className='info-content'>{train.dest}</span>
                 </span>
                 <span className='direction-container'>{`( ${train.dir} )`}</span>

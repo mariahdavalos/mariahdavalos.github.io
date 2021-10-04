@@ -50,7 +50,7 @@ const generateCheckboxes = (formLabel: string, checkboxValues: string[], filterS
                         control={
                             <Checkbox
                                 onChange={() => updatedFilterCheckboxSelection(checkboxValue, formLabel.toLowerCase(), filterSelection, setFilterSelection)}
-                                style={{ color: '#FDBE43', width: '20px', margin: '12px' }}
+                                style={{ color: '#FDBE43', width: '1.25rem', margin: '.75rem' }}
                                 checked={filterSelection[formLabel.toLowerCase() as any]?.some((value: any) => value === checkboxValue.toLowerCase())} />}
                         label={checkboxValue}
                     />
@@ -73,7 +73,7 @@ const getLocationInput = (locationType: string, filterSelection: any, setFilterS
         value={filterSelection[locationType.toLowerCase()]}
         onChange={(event: any) =>
             updateFilterInputSelection(event.target.value, locationType.toLowerCase(), filterSelection, setFilterSelection)}
-        style={{ borderColor: 'white', marginBottom: '8px' }}
+        style={{ borderColor: 'white', marginBottom: '.5rem' }}
         id={`${locationType}Location`}
         label={`${locationType} Location`}
         variant="outlined" />
@@ -104,7 +104,7 @@ const Filter = () => {
                 style: {
                     backgroundColor: '#212121',
                     boxShadow: 'none',
-                    border: '4px solid #111111'
+                    border: '.25rem solid #111111'
                 },
             }}
             open={showFilter}>

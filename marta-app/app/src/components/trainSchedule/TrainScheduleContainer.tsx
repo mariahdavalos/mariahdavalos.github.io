@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useRecoilState } from "recoil"
 import RefreshIcon from '@mui/icons-material/Refresh'
 
@@ -21,7 +21,7 @@ const TrainScheduleContainer = () => {
 
     useMemo(() => {
         fetchTrainSchedules().then((trainSchedules: any) => setCurrentTrainSchedules(trainSchedules))
-    }, [])
+    }, [setCurrentTrainSchedules])
 
     useEffect(() => {
         setUpdatedTrainSchedules(parseTrainArrivals(currentTrainSchedules, filterSelection))
