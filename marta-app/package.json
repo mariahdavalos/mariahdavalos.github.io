@@ -9,8 +9,8 @@
     },
     "scripts": {
         "start": "npm start --prefix api & npm start --prefix app",
-        "predeploy": "npm build --prefix app",
-        "deploy": "gh-pages -d build"
+        "predeploy": "npm run-script build --prefix ./app",
+        "deploy": "npm deploy --prefix ./app"
     },
     "devDependencies": {
         "gh-pages": "^3.2.3"
