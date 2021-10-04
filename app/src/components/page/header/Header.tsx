@@ -8,12 +8,16 @@ const timeSummary = (today: Date, locale: string) => {
     return today.toLocaleTimeString(locale, { hour: 'numeric', hour12: true, minute: 'numeric' });
 }
 
+// header to show user time and introduction to page
 const Header = () => {
     const [today, setDate] = useState(new Date());
 
     const currentTimeText = 'The time is'
     const scheduleText = 'On this page you will find our current train schedules in detail.'
 
+
+    // header keeps up to date ever 60 seconds on the time so the user can reference what time it is now
+    // vs the train schedules they're seeing. 
     useEffect(() => {
         const timer = setInterval(() => {
             setDate(new Date());

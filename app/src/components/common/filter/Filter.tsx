@@ -83,6 +83,9 @@ const toggleFilter = (showFilter: boolean, setShowFilter: any) => {
     setShowFilter(showFilter)
 }
 
+// filter to filter out the schedules on the train schedule container based on train schedule details 
+// updates the filter in our recoil state and builds out the actual filter w/checkboxes for lines and 
+// directions and inputs for arrival and destination locations. 
 const Filter = () => {
     const [showFilter, setShowFilter] = useState(false)
     const [filterSelection, setFilterSelection] = useRecoilState(filterSelectionAtom);

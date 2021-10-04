@@ -26,10 +26,14 @@ const getSchedule = (trains: any, hideLine: boolean) => {
     </div>
 }
 
+// train schedule selection items. renders each train schedule in a new container
+// and passing the array back to the container.
+// shows line, arrival, destination, direction, and arrival time.
 const TrainScheduleSelectionItems = ({ trainSchedules }: { trainSchedules: any }) => {
     const [hideLine, setHideLine] = useState(false)
     const [scheduleSelectionItems, setScheduleSelectionItems] = useState(getSchedule(trainSchedules, hideLine))
 
+    // animation effect used for showing arrival times and lines in an easing container
     useEffect(() => {
         const timer = setInterval(() => {
             setHideLine(hideLine => !hideLine)
