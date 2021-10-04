@@ -1,120 +1,120 @@
 @import '../../../helpers/variables.scss';
 
 .line-item {
-    width: 44rem;
-    background-color: #222222;
-    color: $neutral-light;
-    margin: .5rem;
-    padding: 1.25rem 2rem;
-    border-radius: .25rem;
-    height: 28px;
+  width: 44rem;
+  background-color: #222222;
+  color: $neutral-light;
+  margin: 0.5rem;
+  padding: 1.25rem 2rem;
+  border-radius: 0.25rem;
+  height: 28px;
 
-    display: flex;
-    align-content: center;
-    align-items: center;
-    font-size: 14px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  font-size: 14px;
 }
 
 .fade-in {
-    opacity: 0;
-    transition: opacity .45s ease;
+  opacity: 0;
+  transition: opacity 0.45s ease;
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    &:not(.show){
-        width: 0px;
-        &.arrival-text {
-            color: #222222;
-            width: 0px;
-        }
-
-        .line-indicator {
-            background-color: #222222;
-        }
-
-        .line-text {
-            color: #222222;
-        }
-
+  &:not(.show) {
+    width: 0px;
+    &.arrival-text {
+      color: #222222;
+      width: 0px;
     }
+
+    .line-indicator {
+      background-color: #222222;
+    }
+
+    .line-text {
+      color: #222222;
+    }
+  }
 }
-  
+
 .fade-in.show {
-    opacity: 1;
+  opacity: 1;
 }
 
 .arrival-text {
-    margin: 0px;
-    line-height: 2;
+  margin: 0px;
+  line-height: 2;
 }
 
 .line-text {
-    display: flex;
-    align-items: center;
-    align-content: center;
+  display: flex;
+  align-items: center;
+  align-content: center;
 }
 
 .fade-container {
-    display: flex;
-    align-items: center;
-    width: 24%;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 24%;
+  justify-content: flex-start;
+  margin-left: 1rem;
 }
 
 .info-container {
-    width: 60%;
-    display: flex;
-    flex-direction: row;
+  width: 60%;
+  display: flex;
+  flex-direction: row;
 }
 
 .info-content {
-    margin-right: .75rem;
-    width: 25rem;
+  margin-right: 0.75rem;
+  width: 25rem;
 
-    &.to {
-        max-width: .75rem;
-    }
+  &.to {
+    max-width: 0.75rem;
+  }
 }
 
 .direction-container {
-    width: 20%;
-    display: flex;
-    justify-content: flex-end;
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 @keyframes ease {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 1;    }
+  from {
+    opacity: 0;
   }
-  
+
+  to {
+    opacity: 1;
+  }
+}
 
 .line-indicator {
-    height: 1.25rem;
-    width: 1.25rem;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: .5rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.5rem;
 
-    &.blue {
-        background-color: #0092D0;
-    }
-
-    &.gold {
-        background-color: #FDBE43;
-    }
-
-    &.red {
-        background-color: #981b1e
-    }
-
-    &.green {
-        background-color: #0f893b
-    }
-
-    margin-left: .75rem;
+  &.blue {
+    background-color: #0092d0;
   }
+
+  &.gold {
+    background-color: #fdbe43;
+  }
+
+  &.red {
+    background-color: #981b1e;
+  }
+
+  &.green {
+    background-color: #0f893b;
+  }
+
+  margin-left: 0.75rem;
+}
