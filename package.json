@@ -10,7 +10,7 @@
     "scripts": {
         "install": "npm install --prefix app",
         "build": "npm run build --prefix app",
-        "install:both": "npm install --prefix api & npm install --prefix app",
+        "app-install": "npm install --prefix api & npm install --prefix app",
         "start": "npm start --prefix api & npm start --prefix app",
         "predeploy": "npm run-script build --prefix app",
         "deploy": "npm run deploy --prefix app"

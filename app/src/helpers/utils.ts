@@ -14,15 +14,17 @@ const getDirection = (direction: string, fullDisplayName: boolean) => {
     }
 }
 
+// only select values that contain one of the selected filter values when dealing with groups like checkboxes
 const filterContainsElement = (filterItems: string[], currentItem: string) => {
-
     return filterItems.some((filter: string) => filter === currentItem?.toLowerCase())
 }
 
+// empty strings on input filters are * filters
 const filterMatchesElement = (filterItem: string, currentItem: string) => {
     return filterItem === '' || currentItem.toLowerCase().includes(filterItem?.toLowerCase())
 }
 
+// applies filter values to train arrivals 
 const filterTrainArrivals = (trainSchedules: any, filterSelection: any) => {
     return trainSchedules.filter((trainSchedule: any) => filterContainsElement(filterSelection.lines, trainSchedule.LINE)
         && filterContainsElement(filterSelection.directions, getDirection(trainSchedule.DIRECTION, false))
@@ -30,6 +32,7 @@ const filterTrainArrivals = (trainSchedules: any, filterSelection: any) => {
         && filterMatchesElement(filterSelection.arrival, trainSchedule.STATION))
 }
 
+// formats api response from marta into something more usable
 export const parseTrainArrivals = (trainSchedules: any, filterSelection?: any) => {
     let filteredSelection = trainSchedules;
 
