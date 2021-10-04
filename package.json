@@ -8,11 +8,10 @@
         "@jamesives/github-pages-deploy-action": "^4.1.5"
     },
     "scripts": {
-        "install": "npm install --prefix app",
-        "build": "npm run build --prefix ./app",
+        "build": "npm run build --prefix app",
         "start": "npm start --prefix api & npm start --prefix app",
-        "predeploy": "npm run-script build --prefix ./app",
-        "deploy": "npm run deploy --prefix ./app"
+        "predeploy": "npm run-script build --prefix app",
+        "deploy": "npm run deploy --prefix app"
     },
     "devDependencies": {
         "gh-pages": "^3.2.3"
